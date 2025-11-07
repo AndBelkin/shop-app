@@ -1,0 +1,23 @@
+.logotype {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  width: max-content;
+  transition: all 0.3s ease-in-out;
+}
+
+.logotype__icon {
+  height: 2rem;
+}
+
+.logotype__name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.logotype:hover {
+  opacity: 0.75;
+}
