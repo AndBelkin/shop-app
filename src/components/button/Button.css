@@ -52,3 +52,7 @@
   border-color: var(--color-gray);
   background-color: var(--color-light-gray);
 }
+
+.btn:hover {
+  opacity: 0.75;
+}
