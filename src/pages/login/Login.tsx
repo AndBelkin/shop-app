@@ -1,7 +1,8 @@
-import { useState, type ChangeEvent, type FC, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FC } from "react";
 import "./Login.css";
 import Button from "../../components/button/Button";
 import InputText from "../../components/inputText/InputText";
+import { handleFormSubmit } from "../../utils/forms.utils";
 
 const Login: FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -9,7 +10,6 @@ const Login: FC = () => {
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => event.preventDefault();
   const handleButtonClick = () => console.log({ email, password });
   return (
     <main className="login">

@@ -1,7 +1,8 @@
-import { useState, type ChangeEvent, type FC, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FC } from "react";
 import "./Register.css";
 import Button from "../../components/button/Button";
 import InputText from "../../components/inputText/InputText";
+import { handleFormSubmit } from "../../utils/forms.utils";
 
 const Register: FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -10,7 +11,6 @@ const Register: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => event.preventDefault();
   const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => setUsername(event.target.value);
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
