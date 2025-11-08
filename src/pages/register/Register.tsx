@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type FC, type FormEvent } from "react";
 import "./Register.css";
 import Button from "../../components/button/Button";
+import InputText from "../../components/inputText/InputText";
 
 const Register: FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -23,18 +24,9 @@ const Register: FC = () => {
             {previewUrl && <img src={previewUrl} alt="" className="register-form__profile" />}
             <input type="file" accept="image/*" src="profile-img" onChange={handleFileChange} />
           </div>
-          <label htmlFor="username" className="register-form__label">
-            Username
-          </label>
-          <input type="text" name="username" className="register-form__username" />
-          <label htmlFor="email" className="register-form__label">
-            Email
-          </label>
-          <input type="email" name="email" className="register-form__email" />
-          <label htmlFor="password" className="register-form__label">
-            Password
-          </label>
-          <input type="password" name="password" className="register-form__password" />
+          <InputText type="text" label="Username" placeholder="Your username..." />
+          <InputText type="email" label="Email" placeholder="Your email..." />
+          <InputText type="password" label="Password" placeholder="Your password..." />
           <Button view="accent" onClick={() => {}}>
             Register
           </Button>
