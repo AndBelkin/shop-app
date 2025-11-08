@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Menu from "./pages/menu/Menu";
+import Product from "./pages/product/Product";
 
 const App: FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: FC = () => {
         <Route index element={<Menu />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/product/:id" element={<Product />} />
       </Routes>
     </div>
   );
