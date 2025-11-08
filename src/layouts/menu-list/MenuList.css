@@ -1,0 +1,15 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu h2 {
+  color: var(--color-gray);
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
