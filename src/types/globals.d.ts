@@ -10,3 +10,15 @@ export interface ProductType {
   price: number;
   img: string;
 }
+
+export interface UserType {
+  id: string;
+  username: string;
+  photo: string;
+  email: string;
+  password: string;
+  registerDate: Date;
+  adress: string;
+  birthdayDate: Date;
+  numberOfOrders: number;
+}
