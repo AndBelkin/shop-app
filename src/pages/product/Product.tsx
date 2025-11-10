@@ -26,7 +26,7 @@ const Product: FC = () => {
             <p>{product.name}</p>
           </nav>
           <div className={styles.wrapper}>
-            <h1 className={styles.name}>{product.name}</h1>
+            <h1>{product.name}</h1>
             <p className={styles.desc}>{product.desc}</p>
             <p className={styles.price}>{product.price}</p>
             <BasketCount

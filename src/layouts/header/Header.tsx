@@ -9,7 +9,7 @@ import { useAppStore } from "../../stores/app.store";
 const Header: FC = () => {
   const auth = useAppStore((state) => state.app);
   return (
-    <header className="header">
+    <header className="header container">
       <Logotype />
       <SearchInput />
       {!auth.isAuth ? <HeaderWrapperAuth /> : <HeaderWrapperLogout />}

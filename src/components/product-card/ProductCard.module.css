@@ -18,6 +18,7 @@
 }
 
 .productCard .title {
+  color: var(--color-primary);
 }
 .productCard .desc {
   display: -webkit-box;

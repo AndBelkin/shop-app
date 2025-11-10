@@ -1,11 +1,11 @@
 .register {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .register-section {
   width: 50%;
-  margin: 2rem auto;
 }
 .register-form {
   display: flex;

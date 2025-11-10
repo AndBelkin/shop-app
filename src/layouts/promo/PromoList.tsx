@@ -7,7 +7,7 @@ import styles from "./PromoList.module.css";
 const PromoList: FC = () => {
   return (
     <section className={styles.promo}>
-      <h2>Special offers</h2>
+      <h3>Special offers</h3>
       <div className={styles.promoList}>
         <div className={styles.promoItem}>
           <h3>Coffee as a gift!</h3>

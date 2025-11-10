@@ -6,6 +6,8 @@
   --color-gray: #929292;
   --color-light-gray: #f9f9f9;
   --color-accent: #1440ff;
+
+  --max-with: 1200px;
 }
 
 * {
@@ -25,4 +27,30 @@ input,
 button,
 textarea {
   font-family: "Poppins", sans-serif;
+}
+
+main,
+.container {
+  max-width: var(--max-with);
+  width: 100%;
+  margin: 1rem auto;
+}
+
+section {
+  margin: 1rem 0;
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+h3 {
+  color: var(--color-gray);
+  font-size: 1.25rem;
 }

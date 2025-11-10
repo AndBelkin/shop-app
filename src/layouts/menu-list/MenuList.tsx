@@ -7,7 +7,7 @@ const MenuList: FC = () => {
   const renderMenuList = () => products.map((item) => <ProductCard product={item} key={item.id} />);
   return (
     <section className="menu">
-      <h2>Classic drinks</h2>
+      <h3>Classic drinks</h3>
       <div className="menu-list">{renderMenuList()}</div>
     </section>
   );
