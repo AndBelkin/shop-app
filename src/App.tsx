@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Menu from "./pages/menu/Menu";
 import Product from "./pages/product/Product";
+import Profile from "./pages/profile/Profile";
 
 const App: FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
     </div>
   );
