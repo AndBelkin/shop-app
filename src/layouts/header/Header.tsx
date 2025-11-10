@@ -5,6 +5,7 @@ import Button from "../../components/button/Button";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../../stores/app.store";
+import UserBar from "../../components/user-bar/UserBar";
 
 const Header: FC = () => {
   const auth = useAppStore((state) => state.app);
@@ -12,7 +13,7 @@ const Header: FC = () => {
     <header className="header container">
       <Logotype />
       <SearchInput />
-      {!auth.isAuth ? <HeaderWrapperAuth /> : <HeaderWrapperLogout />}
+      {!auth.isAuth ? <HeaderWrapperAuth /> : <UserBar />}
     </header>
   );
 };
@@ -29,16 +30,6 @@ const HeaderWrapperAuth: FC = () => {
       <Button view="black" onClick={() => navigate("/register")}>
         Join Us
       </Button>
-    </div>
-  );
-};
-
-const HeaderWrapperLogout: FC = () => {
-  const handleClickButton = () => useAppStore.getState().logout();
-  return (
-    <div className="header-wrapper">
-      <p></p>
-      <Button onClick={handleClickButton}>Log out</Button>
     </div>
   );
 };

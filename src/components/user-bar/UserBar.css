@@ -1,0 +1,17 @@
+.user-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-bar img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: var(--color-gray);
+}
+
+.user-bar a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
