@@ -4,10 +4,11 @@ import type { UserType } from "../types/globals";
 
 interface UsersState {
   users: UserType[];
-  addUser: (userData: Omit<UserType, "numberOfOrders">) => void;
+  addUser: (email: string, password: string) => void;
   updateUser: (id: string, userData: Partial<UserType>) => void;
-  removeUser: (id: string) => void;
   getUserById: (id: string) => UserType | undefined;
+  checkUserForLogin: (email: string, password: string) => boolean;
+  checkUserIsExist: (email: string) => boolean;
 }
 
 export const useUsersStore = create<UsersState>()(
@@ -15,10 +16,12 @@ export const useUsersStore = create<UsersState>()(
     (set, get) => ({
       users: [],
 
-      addUser: (userData) => {
+      addUser: (email, password) => {
         const newUser: UserType = {
-          ...userData,
-          numberOfOrders: 0,
+          id: crypto.randomUUID(),
+          email,
+          password,
+          createdAt: new Date(),
         };
         set((state) => ({
           users: [...state.users, newUser],
@@ -31,14 +34,17 @@ export const useUsersStore = create<UsersState>()(
         }));
       },
 
-      removeUser: (id) => {
-        set((state) => ({
-          users: state.users.filter((user) => user.id !== id),
-        }));
-      },
-
       getUserById: (id) => {
         return get().users.find((user) => user.id === id);
+      },
+
+      checkUserForLogin: (email, password) => {
+        const user = get().users.find((user) => user.email === email && user.password === password);
+        return user ? true : false;
+      },
+      checkUserIsExist: (email) => {
+        const user = get().users.find((user) => user.email === email);
+        return user ? true : false;
       },
     }),
     {

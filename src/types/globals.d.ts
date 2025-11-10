@@ -13,12 +13,21 @@ export interface ProductType {
 
 export interface UserType {
   id: string;
-  username: string;
-  photo: string;
   email: string;
   password: string;
-  registerDate: Date;
-  adress: string;
-  birthdayDate: Date;
-  numberOfOrders: number;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  avatarUrl?: string;
+  createdAt: Date;
+  address?: UserAddress[];
+}
+
+export interface UserAdress {
+  id: string;
+  street: string;
+  city: string;
+  country: string;
+  isDefault: boolean;
+  notes?: string;
 }

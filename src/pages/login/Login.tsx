@@ -1,8 +1,10 @@
-import { useState, type ChangeEvent, type FC } from "react";
 import "./Login.css";
 import Button from "../../components/button/Button";
 import InputText from "../../components/inputText/InputText";
 import { handleFormSubmit } from "../../utils/forms.utils";
+import { useUsersStore } from "../../stores/users.store";
+import { Link } from "react-router-dom";
+import { useState, type ChangeEvent, type FC } from "react";
 
 const Login: FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -10,12 +12,24 @@ const Login: FC = () => {
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
-  const handleButtonClick = () => console.log({ email, password });
+  const handleButtonClick = () => {
+    if (email && password) {
+      if (useUsersStore.getState().checkUserIsExist(email)) {
+        if (useUsersStore.getState().checkUserForLogin(email, password)) {
+          console.log("Authorization was successful!");
+        } else {
+          console.log("The password does not match the account.");
+        }
+      } else {
+        console.log("The user with this email address is not registered!");
+      }
+    }
+  };
   return (
     <main className="login">
       <section className="login-section">
         <form className="login-form" onSubmit={handleFormSubmit}>
-          <h2 className="login-form__title">Log In</h2>
+          <h2 className="login-form__title">Sigh in to Coffee Shop</h2>
           <p className="login-form__subtitle">For buying drinks and beverages. Login first, please.</p>
           <InputText
             type="text"
@@ -43,6 +57,9 @@ const Login: FC = () => {
           <Button view="none" onClick={() => {}}>
             Forgot password
           </Button>
+          <p style={{ textAlign: "center", fontSize: ".75rem" }}>
+            Don't have an account yet? <Link to="/register"> Register now</Link>
+          </p>
         </form>
       </section>
     </main>

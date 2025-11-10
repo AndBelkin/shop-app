@@ -13,10 +13,10 @@ const Header: FC = () => {
       <SearchInput />
       <div className="header-wrapper">
         <Button view="white" onClick={() => navigate("/login")}>
-          Login
+          Sign In
         </Button>
         <Button view="black" onClick={() => navigate("/register")}>
-          Sign Up
+          Join Us
         </Button>
       </div>
     </header>
