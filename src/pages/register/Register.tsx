@@ -4,9 +4,10 @@ import Button from "../../components/button/Button";
 import InputText from "../../components/inputText/InputText";
 import { handleFormSubmit } from "../../utils/forms.utils";
 import { useUsersStore } from "../../stores/users.store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register: FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -18,6 +19,7 @@ const Register: FC = () => {
       if (!useUsersStore.getState().checkUserIsExist(email)) {
         useUsersStore.getState().addUser(email, password);
         console.log(`User [${email}, ${password}] created!`);
+        navigate("/login");
       } else {
         console.log("The user with this email address has already been registered!");
       }

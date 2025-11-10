@@ -3,10 +3,12 @@ import Button from "../../components/button/Button";
 import InputText from "../../components/inputText/InputText";
 import { handleFormSubmit } from "../../utils/forms.utils";
 import { useUsersStore } from "../../stores/users.store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, type ChangeEvent, type FC } from "react";
+import { useAppStore } from "../../stores/app.store";
 
 const Login: FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -14,9 +16,11 @@ const Login: FC = () => {
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
   const handleButtonClick = () => {
     if (email && password) {
-      if (useUsersStore.getState().checkUserIsExist(email)) {
-        if (useUsersStore.getState().checkUserForLogin(email, password)) {
-          console.log("Authorization was successful!");
+      const user = useUsersStore.getState().users.find((user) => user.email === email);
+      if (user) {
+        if (user.password === password) {
+          useAppStore.getState().login(user);
+          navigate("/");
         } else {
           console.log("The password does not match the account.");
         }
